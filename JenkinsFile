@@ -1,6 +1,7 @@
 node {
    environment {
     def MSBUILD = 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2017\\BuildTools\\MSBuild\\15.0\\Bin'
+    def NUNIT = 'C:\\Program Files (x86)\\NUnit.Console-3.11.1\\bin\\net20\\nunit3-console.exe'
     CONFIG = 'Release'
     PLATFORM = 'x64'
   }
@@ -22,7 +23,7 @@ node {
   }
 
   stage ('Test') {
-    powershell label: '', script: 'C:\\Program Files (x86)\\NUnit.Console-3.11.1\\bin\\net20\\nunit3-console.exe PipelineTest\\bin\\Debug\\PipelineTest.dll'
+    powershell label: '', script: '"${NUNIT}" PipelineTest\\bin\\Debug\\PipelineTest.dll'
   }
     
 
