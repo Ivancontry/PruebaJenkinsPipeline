@@ -1,7 +1,7 @@
 node {
 
   stage('Checkout') {
-    git 'https://github.com/Ivancontry/PruebaJenkinsPipeline.git'
+    branch: 'master' ,git 'https://github.com/Ivancontry/PruebaJenkinsPipeline.git'
   }
   //SignusFinanciero.sln
   stage ('Restore Nuget') {
