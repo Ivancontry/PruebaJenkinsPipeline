@@ -18,7 +18,7 @@ node {
   //}
   
   stage('Build') {
-    powershell label: '', script: '"${MSBUILD}" PipelineTest\\\\PipelineTest.csproj'    
+   powershell label: '', script: '"${MSBUILD}" PipelineTest\\PipelineTest.csproj'   
   }
 
   //stage ('Test') {
