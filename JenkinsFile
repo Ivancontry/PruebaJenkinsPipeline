@@ -5,26 +5,25 @@ node {
     PLATFORM = 'x64'
   }
 
-  //stage('Checkout') {
-    //git 'https://github.com/Ivancontry/PruebaJenkinsPipeline.git'
-  //}
+  stage('Checkout') {
+    git 'https://github.com/Ivancontry/PruebaJenkinsPipeline.git'
+  }
   //SignusFinanciero.sln
-  //stage ('Restore Nuget') {
-    //powershell label: '', script: 'C:/nuget/nuget.exe restore PruebaJenkinsPipeline.sln'
-  //}
+  stage ('Restore Nuget') {
+    powershell label: '', script: 'C:/nuget/nuget.exe restore PruebaJenkinsPipeline.sln'
+  }
   
- // stage('Clean') {
+  stage('Clean') {
     //bat 'dotnet clean SignusCreditos.sln'
-  //}
+  }
   
   stage('Build') {
    powershell label: '', script: '"${MSBUILD}" PipelineTest\\PipelineTest.csproj'   
   }
 
-  //stage ('Test') {
-    //bat "dotnet test Credito/Core.Domain.Test/Credito.Core.Domain.Test.csproj --logger trx;LogFileName=unit_tests.trx"
-    //mstest testResultsFile:"**/*.trx", keepLongStdio: true
-  //}
+  stage ('Test') {
+    powershell label: '', script: 'C:\\Program Files (x86)\\NUnit.Console-3.11.1\\bin\\net20\\nunit3-console.exe PipelineTest\\bin\\Debug\\PipelineTest.dll'
+  }
     
 
   stage('Publish') {
