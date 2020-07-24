@@ -1,4 +1,9 @@
 node {
+   environment {
+    MSBUILD = "C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\MSBuild\15.0\Bin"
+    CONFIG = 'Release'
+    PLATFORM = 'x64'
+  }
 
   stage('Checkout') {
     git 'https://github.com/Ivancontry/PruebaJenkinsPipeline.git'
@@ -13,7 +18,7 @@ node {
   }
   
   stage('Build') {
-    //bat 'dotnet build SignusCreditos.sln --configuration Release'
+    "${MSBUILD}" PipelineTest\PipelineTest.csproj    
   }
 
   stage ('Test') {
